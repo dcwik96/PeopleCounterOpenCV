@@ -1,14 +1,10 @@
-cmake_minimum_required(VERSION 3.13)
-project(PeopleCounterOpenCV)
+cmake_minimum_required(VERSION 2.8.4)
+project(lab13)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-include_directories(.)
-
-add_executable(PeopleCounterOpenCV
-        "videos/[10 sec fragment, HDconvert.com] TownCentreXVID.avi"
-        videos/Video_003.avi
-        buildAndRun.sh
-        CMakeLists.txt
-        cvui.h
-        main.cpp)
+find_package( OpenCV REQUIRED )
+set(SOURCE_FILES main.cpp cvui.h)
+add_executable(OpenCVTest ${SOURCE_FILES})
+include_directories(${OpenCV_INCLUDE_DIRS})
+target_link_libraries( OpenCVTest ${OpenCV_LIBS} )
